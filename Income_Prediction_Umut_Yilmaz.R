@@ -101,7 +101,7 @@ SVMpred <- data.matrix(factor(data.matrix(SVM$fitted)))
 # The final dataset and model
 Dataset_ensmbl <- cbind(lregpred,KNN,SVMpred,Dataset)
 rf_ensmbl <- h2o.randomForest(x = c(1:16), y = 17, as.h2o(Dataset_ensmbl),fold_assignment = "Stratified", nfolds = 5, ntrees = 120)
-rf_ensmbl@model[["variable_importances"]]
+rf_ensmbl
 
 # Prediction
 predictions <- predict(rf_ensmbl, as.h2o(Dataset_ensmbl))
